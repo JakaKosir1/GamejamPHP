@@ -106,7 +106,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Your Team</title>
+    <title>Ustvari ekipo</title>
     <style>
         body {
             font-family: 'SansSerif', Verdana;
@@ -117,7 +117,6 @@ $conn->close();
             margin: 0;
             padding: 0;
         }
-
         form {
             display: inline-block;
             text-align: left;
@@ -143,7 +142,13 @@ $conn->close();
             background-color: #5d479c;
             color: #fff;
             cursor: pointer;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
         }
+
 
         input[type="submit"]:hover {
             background-color: #7b6aae;
@@ -156,18 +161,24 @@ $conn->close();
             overflow: hidden;
         }
 
-        .navbar .navadn {
+        .navadn {
             float: left;
-            display: block;
             color: #ccc; /* Grey text */
             text-align: center;
             padding: 14px 16px;
             text-decoration: none;
-            transition: color 0.3s ease; /* Smooth color transition */
+            font-size: 18px; /* Adjust font size */
+            font-weight: bold; /* Make text bold */
+            letter-spacing: 1px; /* Add letter spacing for clarity */
+            text-transform: uppercase; /* Convert text to uppercase */
+            transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition */
         }
 
-        .navbar .navadn:hover {
-            color: #888; /* Dark grey on hover */
+        .navadn:hover {
+            color: #fff; /* White text on hover */
+            background-color: #5d479c; /* Lighter purple background on hover */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+            transform: translateY(-2px); /* Move text slightly up on hover */
         }
 
         .navbar img {
@@ -199,15 +210,15 @@ $conn->close();
 </head>
 <body>
 <header class="navbar">
-    <a class="navadn" href="home.php">Home</a>
-    <a class="navadn" href="team.php">Create Teams</a>
+    <a class="navadn" href="home.php">Domov</a>
+    <a class="navadn" href="team.php">Ustvari ekipo</a>
     <a href="http://ers.scv.si" target="_blank">
         <img class="povecava" src="slike/scv.png" alt="Logo" height="40">
     </a>
 </header>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <br><br>
-    <h2><label for="teamName">Team Name:</label></h2>
+    <h2><label for="teamName">Ime ekipe:</label></h2>
     <input type="text" name="teamName" required>
 
     <label class="mail" for="email1">Email 1:</label>
@@ -221,7 +232,7 @@ $conn->close();
 
     <label class="mail" for="email4">Email 4:</label>
     <input type="email" name="email4">
-    <input class="button" type="submit" value="Create Team">
+    <input class="button" type="submit" value="Ustvari">
 </form>
 </body>
 </html>

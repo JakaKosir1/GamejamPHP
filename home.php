@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameJam Homepage</title>
-    <style>
+    <title>GameJam Domača stran</title>
+        <style>
         body {
             background-color: #2e1a4a; /* Dark purple background */
             color: #fff; /* White text */
@@ -43,84 +43,160 @@
         .create-team-btn:hover {
             background-color: #7b6aae; /* Darker purple on hover */
         }
+
         .navbar {
             overflow: hidden;
+            background-color: #432980; /* Purple background */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
         }
 
-        .navbar .navadn {
+        .navadn {
             float: left;
-            display: block;
             color: #ccc; /* Grey text */
             text-align: center;
             padding: 14px 16px;
             text-decoration: none;
-            transition: color 0.3s ease; /* Smooth color transition */
+            font-size: 18px; /* Adjust font size */
+            font-weight: bold; /* Make text bold */
+            letter-spacing: 1px; /* Add letter spacing for clarity */
+            text-transform: uppercase; /* Convert text to uppercase */
+            transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition */
         }
 
-        .navbar .navadn:hover {
-            color: #888; /* Dark grey on hover */
+        .navadn:hover {
+            color: #fff; /* White text on hover */
+            background-color: #5d479c; /* Lighter purple background on hover */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+            transform: translateY(-2px); /* Move text slightly up on hover */
         }
 
         .navbar img {
             float: right;
             padding: 10px;
-        }
-        .mainPhoto{
-            box-shadow: 0 10px 10px 0px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease; /* Smooth transition */
         }
 
-        /* New CSS for positioning */
+        .navbar img:hover {
+            transform: scale(1.1); /* Increase size on hover */
+        }
+
+        .mainPhoto {
+            box-shadow: 0 10px 10px 0px rgba(0, 0, 0, 0.2);
+        }
+
         h2 {
             color: #ff00ff; /* Set h2 color to pink */
-            font-size: 45px;
+            font-size: 55px;
             text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
         }
 
         .about-section {
             display: flex;
-            justify-content: center; /* Center the content horizontally */
-            align-items: center; /* Center the content vertically */
+            flex-direction: column; /* Align items in a column */
+            align-items: center; /* Center the content horizontally */
             margin-top: 50px; /* Adjust as needed */
         }
 
         .about-section-div {
-            width: 50%; /* Adjust width as needed */
-            padding: 0 20px; /* Add padding to the sides */
+            width: 100%; /* Adjust width as needed */
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            margin-top: 20px; /* Add margin to separate sections */
+        }
+
+        .about-content {
+            border: 2px solid #ff00ff; /* Pink border */
+            padding: 20px; /* Add padding inside the border */
+            margin: 20px; /* Add margin outside the border */
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+            border-radius: 10px;
+        }
+
+        .about-content:hover {
+            transform: scale(1.01); /* Increase size by 10% */
+            transition: transform 0.3s ease; /* Smooth transition */
         }
 
         .about-section-title {
-        font-size: 27px; /* Set font size to make it as big as h4 */
-        text-align: center; /* Align text to the center */
-        color: #ff00ff; /* Set text color to pink */
+            font-size: 27px; /* Set font size to make it as big as h4 */
+            text-align: center; /* Align text to the center */
+            color: #ff00ff; /* Set text color to pink */
         }
 
         .landing-page {
             width: 100%; /* Ensure the image takes full width */
         }
+
         .gaudic {
             max-width: 80%; /* Set maximum width for the image */
             height: auto; /* Maintain aspect ratio */
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease; /* Smooth transition */
         }
+
+        .gaudic:hover {
+            transform: scale(1.1); /* Increase size by 10% */
+        }
+
+        .sponz-section-div {
+            display: flex;
+            justify-content: center;
+        }
+
+        .sponz {
+            width: 200px; /* Adjust as needed */
+            height: 100px; /* Adjust as needed */
+            object-fit: contain; /* Ensure the image fits within the specified dimensions */
+            margin: 0 10px; /* Add margin between images */
+            transition: transform 0.3s ease; /* Smooth transition */
+        }
+
         .sponz:hover {
-        transform: scale(1.1); /* Increase size by 10% */
-        transition: transform 0.3s ease; /* Smooth transition */
+            transform: scale(1.1); /* Increase size by 10% */
         }
+
         .povecava:hover {
             transform: scale(1.1); /* Increase size by 10% */
             transition: transform 0.3s ease; /* Smooth transition */
         }
+
         .countdown {
-            font-size: 100px;
-            color: white; /* Pink color */
-        }
+    font-size: 3em; /* Larger font size */
+    color: #fff; /* White color */
+    background-color: #ff00ff; /* Pink background */
+    padding: 20px; /* Increase padding */
+    border: 2px solid #fff; /* Border */
+    border-radius: 10px; /* Rounded corners */
+    margin: 0 auto; /* Center the countdown horizontally */
+    max-width: 80%; /* Limit maximum width */
+    text-align: center; /* Center text */
+    display: flex; /* Use flexbox for responsiveness */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+@media screen and (max-width: 768px) {
+    .countdown {
+        font-size: 2em; /* Adjust font size for smaller screens */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .countdown {
+        font-size: 1.5em; /* Further adjust font size for smaller screens */
+        padding: 15px; /* Adjust padding */
+    }
+}
+
+
     </style>
 </head>
 <body>
 <header class="navbar">
-    <a class="navadn" href="home.php">Home</a>
-    <a class="navadn" href="team.php">Create Team</a>
+    <a class="navadn" href="home.php">Domov</a>
+    <a class="navadn" href="team.php">Ustvari ekipo</a>
     <a href="http://ers.scv.si" target="_blank">
         <img class="povecava" src="slike/scv.png" alt="Logo" height="40">
     </a>
@@ -132,18 +208,24 @@
     <h2>O DOGODKU</h2>
     <div class="about-section">
         <div class="about-section-div">
-            <p class="about-section-title">Kaj je ERŠ Gamejam?</p>
-            <p class="about-section-text">ERŠ Gamejam je dogodek, ki ga organizirajo dijaki Elektro in računalniške šole v Velenju. Dogodek je namenjen vsem, ki jih zanima računalništvo predvsem pa izdelovanje računalniških iger. Na dogodku se bodo odvijale različne aktivnosti, kot so tekmovanja za izdelovanje računalniških iger, VR, PS5 ipd.</p>
-            <p class="about-section-title">Kdaj in kje?</p>
-            <p class="about-section-text">ERŠ Gamejam se bo odvijal v prostorih restavracije Gaudeamus v Velenju, in sicer 29. In 30. marca 2024. Dogodek se bo začel ob 14:00 in končal naslednji dan ob 15:00.</p>
-            <p class="about-section-title">Kaj potrebujem?</p>
-            <p class="about-section-text">Za udeležbo na dogodku potrebujete računalnik, monitor, tipkovnico, miško in slušalke, ali pa samo laptop in slušalke. Do neke mere lahko računalnike priskrbi tudi šola, vendar je potrebno to navesti na mail "MAIL EN". Priporočamo tudi, da s seboj prinesete kakšen podaljšek in internetni kabel, saj je električnih vtičnic v šoli malo.</p>
-        </div>
-
-        <div class="about-section-div">
-            <img class="gaudic" src="Slike/gaudic.png">
+            <div class="about-content">
+                <h2 class="about-section-title">Kaj je ERŠ Gamejam?</h2>
+                <p class="about-section-text">ERŠ Gamejam je dogodek, ki ga organizirajo dijaki Elektro in računalniške šole v Velenju. Namenjen je navdušencem nad računalništvom, še posebej tistim, ki jih zanima ustvarjanje računalniških iger. Dogodek bo vključeval različne dejavnosti, vključno s tekmovanji v razvoju računalniških iger, VR doživetji, igranjem na PS5 in še več.</p>
+                <h2 class="about-section-title">Kdaj in Kje?</h2>
+                <p class="about-section-text">ERŠ Gamejam bo potekal v prostorih restavracije Gaudeamus v Velenju, 29. in 30. marca 2024. Dogodek se bo začel ob 14:00 in končal naslednji dan ob 15:00.</p>
+                <h2 class="about-section-title">Kaj Potrebujem?</h2>
+                <p class="about-section-text">Za udeležbo na dogodku potrebujete računalnik, monitor, tipkovnico, miško in slušalke, ali pa samo prenosni računalnik in slušalke. Šola lahko na določeni ravni zagotovi računalnike, vendar prosimo, da to potrebo sporočite preko e-pošte na naslov "E-POŠTA". Priporočamo tudi, da prinesete podaljšek in internetni kabel, saj je število električnih vtičnic omejeno.</p>
+            </div>
         </div>
     </div>
+
+    <div class="about-section-div">
+    <a href="https://www.strabag.si/databases/internet/_public/content.nsf/web/SI-STRABAG.SIN-PROJEKTE-Visoke%20in%20inženirske%20gradnje-JAVNE%20ZGRADBE-OBJEKT%20»GAUDEAMUS«,%20VELENJE" target="_blank">
+        <img class="gaudic" src="Slike/gaudic2.jpeg" alt="Restavracija Gaudeamus">
+    </a>
+</div>
+
+
     <br>
     <h2>ČAS DO DOGODKA</h2>
     <br><br>
@@ -154,9 +236,13 @@
         <a href="https://trickytribe.com" target="_blank">
             <img class="sponz" src="Slike/sponz1.png">
         </a>
+        <a href="https://czk.si/skupnost-czk/drustvo-razvijalcev-iger-slovenije/" target="_blank">
+            <img class="sponz" src="Slike/igre.png">
+        </a>
     </div>
     <br><br>
 </section>
+
 <script>
     // Set the date we're counting down to
     var countDownDate = new Date("Mar 29, 2024 14:00:00").getTime();
