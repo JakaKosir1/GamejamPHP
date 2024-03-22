@@ -189,8 +189,6 @@
         padding: 15px; /* Adjust padding */
     }
 }
-
-
     </style>
 </head>
 <body>
@@ -198,7 +196,7 @@
     <a class="navadn" href="home.php">Domov</a>
     <a class="navadn" href="team.php">Ustvari ekipo</a>
     <a href="http://ers.scv.si" target="_blank">
-        <img class="povecava" src="slike/scv.png" alt="Logo" height="40">
+        <img class="povecava" src="Slike/scv.png" alt="Logo" height="40">
     </a>
 </header>
 
@@ -238,6 +236,9 @@
         </a>
         <a href="https://czk.si/skupnost-czk/drustvo-razvijalcev-iger-slovenije/" target="_blank">
             <img class="sponz" src="Slike/igre.png">
+        </a>
+        <a href="https://www.mc-velenje.si" target="_blank">
+            <img class="sponz" src="Slike/MC_Logo.png">
         </a>
     </div>
     <br><br>
