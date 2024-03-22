@@ -1,8 +1,8 @@
 <?php
 // Assuming you have a database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
+$servername = "gamejam.scv.si";
+$username = "user1234";
+$password = "E>w&!^uo0";
 $dbname = "mysite";
 
 // Create connection
