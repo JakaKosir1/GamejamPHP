@@ -21,30 +21,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["password"])) {
         $sql = "SELECT * FROM teams";
         $result = $conn->query($sql);
 
-        if ($result->num_rows > 0) {
-            echo "<table border='1'>
-                <tr>
-                <th>Team ID</th>
-                <th>Team Name</th>
-                <th>Email 1</th>
-                <th>Email 2</th>
-                <th>Email 3</th>
-                <th>Email 4</th>
-                </tr>";
-            // output data of each row
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr>
-                    <td>" . $row["team_id"] . "</td>
-                    <td>" . $row["team_name"] . "</td>
-                    <td>" . $row["email1"] . "</td>
-                    <td>" . $row["email2"] . "</td>
-                    <td>" . $row["email3"] . "</td>
-                    <td>" . $row["email4"] . "</td>
+        if ($result) { // Check if query was successful
+            if ($result->num_rows > 0) {
+                echo "<table border='1'>
+                    <tr>
+                    <th>Team ID</th>
+                    <th>Team Name</th>
+                    <th>Email 1</th>
+                    <th>Email 2</th>
+                    <th>Email 3</th>
+                    <th>Email 4</th>
                     </tr>";
+                // output data of each row
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr>
+                        <td>" . $row["team_id"] . "</td>
+                        <td>" . $row["team_name"] . "</td>
+                        <td>" . $row["email1"] . "</td>
+                        <td>" . $row["email2"] . "</td>
+                        <td>" . $row["email3"] . "</td>
+                        <td>" . $row["email4"] . "</td>
+                        </tr>";
+                }
+                echo "</table>";
+            } else {
+                echo "0 results";
             }
-            echo "</table>";
         } else {
-            echo "0 results";
+            echo "Error: " . $conn->error;
         }
 
         $conn->close();
@@ -61,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["password"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ustvari ekipo</title>
-     <style>
+    <style>
         body {
             font-family: 'SansSerif', Verdana;
             background-color: #2e1a4a;
