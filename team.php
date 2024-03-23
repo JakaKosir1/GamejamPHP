@@ -1,9 +1,9 @@
 <?php
 // Assuming you have a database connection
-$servername = "gamejam.scv.si";
-$username = "user1234";
-$password = "E>w&!^uo0";
-$dbname = "mysite";
+$servername = "jakakosir.eu";
+$username = "jakakosir_gamejam";
+$password = "=2d0?f+;?PO$";
+$dbname = "jakakosir_gamejam";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
