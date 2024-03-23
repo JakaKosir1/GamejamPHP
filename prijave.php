@@ -104,10 +104,11 @@
             font-size: 20px;
         }
         .container {
-  height: 200px;
-  position: relative;
-  border: 3px solid green;
-}
+        height: 100vh; /* Use viewport height */
+        display: flex; /* Use flexbox for centering */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+    }
 
 .vertical-center {
   margin: 0;
