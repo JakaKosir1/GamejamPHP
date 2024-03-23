@@ -103,6 +103,19 @@
             margin-top: 25px;
             font-size: 20px;
         }
+        .container {
+  height: 200px;
+  position: relative;
+  border: 3px solid green;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
     </style>
 </head>
 <body>
@@ -119,6 +132,8 @@
     <input type="password" name="password" required>
     <input class="button" type="submit" value="Submit">
 </form>
+    <div class="container">
+  <div class="vertical-center">
     <?php
 // Check if password is correct
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["password"])) {
@@ -166,7 +181,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["password"])) {
                 }
                 echo "</table>";
             } else {
-                echo "0 results";
+                echo "Ni ekip.";
             }
         } else {
             echo "Error: " . $conn->error;
@@ -179,5 +194,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["password"])) {
     }
 }
 ?>
+</div>
+</div>
 </body>
 </html>
