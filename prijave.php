@@ -61,8 +61,105 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["password"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ustvari ekipo</title>
-    <style>
-        /* Your existing CSS styles here */
+     <style>
+        body {
+            font-family: 'SansSerif', Verdana;
+            background-color: #2e1a4a;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+            padding: 0;
+        }
+        form {
+            display: inline-block;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 2px solid #5d479c;
+            border-radius: 5px;
+            background-color: #3f2a6d;
+            color: #fff;
+        }
+
+        input[type="submit"] {
+            background-color: #5d479c;
+            color: #fff;
+            cursor: pointer;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+
+        input[type="submit"]:hover {
+            background-color: #7b6aae;
+        }
+        a {
+            text-decoration: none; /* Remove underline */
+            color: white; /* Match the background color */
+        }
+        .navbar {
+            overflow: hidden;
+        }
+
+        .navadn {
+            float: left;
+            color: #ccc; /* Grey text */
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 18px; /* Adjust font size */
+            font-weight: bold; /* Make text bold */
+            letter-spacing: 1px; /* Add letter spacing for clarity */
+            text-transform: uppercase; /* Convert text to uppercase */
+            transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+        }
+
+        .navadn:hover {
+            color: #fff; /* White text on hover */
+            background-color: #5d479c; /* Lighter purple background on hover */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+            transform: translateY(-2px); /* Move text slightly up on hover */
+        }
+
+        .navbar img {
+            float: right;
+            padding: 10px;
+        }
+        header {
+            padding: 20px;
+            background-color: #432980; /* Slightly lighter purple for header */
+            box-shadow: 0 5px 5px 0px rgba(0,0,0,0.1);
+        }
+        h2 {
+            font-size: 25px;
+            text-align: center;
+            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+        }
+        .mail{
+            text-align: center;
+        }
+        .povecava:hover {
+            transform: scale(1.1); /* Increase size by 10% */
+            transition: transform 0.3s ease; /* Smooth transition */
+        }
+        .button{
+            margin-top: 25px;
+            font-size: 20px;
+        }
     </style>
 </head>
 <body>
