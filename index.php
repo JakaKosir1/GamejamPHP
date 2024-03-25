@@ -212,7 +212,7 @@
                 <h2 class="about-section-title">Kdaj in Kje?</h2>
                 <p class="about-section-text">ERŠ Gamejam bo potekal v prostorih restavracije Gaudeamus v Velenju, 29. in 30. marca 2024. Dogodek se bo začel ob 14:00 in končal naslednji dan ob 15:00.</p>
                 <h2 class="about-section-title">Kaj Potrebujem?</h2>
-                <p class="about-section-text">Za udeležbo na dogodku potrebujete računalnik, monitor, tipkovnico, miško in slušalke, ali pa samo prenosni računalnik in slušalke. Šola lahko na določeni ravni zagotovi računalnike, vendar prosimo, da to potrebo sporočite preko e-pošte na naslov "E-POŠTA". Priporočamo tudi, da prinesete podaljšek in internetni kabel, saj je število električnih vtičnic omejeno.</p>
+                <p class="about-section-text">Za udeležbo na dogodku potrebujete računalnik, monitor, tipkovnico, miško in slušalke, ali pa samo prenosni računalnik in slušalke. Šola lahko na določeni ravni zagotovi računalnike, vendar prosimo, da to potrebo sporočite preko e-pošte na naslov "andraz.holesek@scv.si". Priporočamo tudi, da prinesete podaljšek in internetni kabel, saj je število električnih vtičnic omejeno.</p>
             </div>
         </div>
     </div>
