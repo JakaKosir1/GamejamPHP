@@ -1,106 +1,3 @@
-<?php
-// Assuming you have a database connection
-$servername = "jakakosir.eu";
-$username = "jakakosir_gamejam";
-$password = "=2d0?f+;?PO$";
-$dbname = "jakakosir_gamejam";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $teamName = $_POST["teamName"];
-    $email1 = $_POST["email1"];
-    $email2 = $_POST["email2"];
-    $email3 = $_POST["email3"];
-    $email4 = $_POST["email4"];
-
-    // Validate emails
-    $validEmails = validateEmails([$email1, $email2, $email3, $email4]);
-
-    // Check for duplicate emails
-    $duplicateEmails = checkDuplicateEmails([$email1, $email2, $email3, $email4]);
-
-    if ($validEmails && empty($duplicateEmails)) {
-        // Check for existing team name
-        $existingTeam = checkExistingTeam($teamName);
-
-        if (!$existingTeam) {
-            // Save to the database
-            $sql = "INSERT INTO teams (team_name, email1, email2, email3, email4) 
-                    VALUES ('$teamName', '$email1', '$email2', '$email3', '$email4')";
-
-            if ($conn->query($sql) === TRUE) {
-                echo "Shranjeno.";
-            } else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
-            }
-        } else {
-            echo "Error: Ime '$teamName' že obstaja.";
-        }
-    } else {
-        $errorMsg = '';
-
-        if (!$validEmails) {
-            $errorMsg .= "Uporabi šolski email. ";
-        }
-
-        if (!empty($duplicateEmails)) {
-            $errorMsg .= "Ne uporabi isti email večkrat. ";
-        }
-
-        echo "Error: " . $errorMsg;
-    }
-}
-
-// Function to validate emails
-function validateEmails($emails)
-{
-    foreach ($emails as $email) {
-        if (!empty($email) && (!filter_var($email, FILTER_VALIDATE_EMAIL) || !endsWith($email, '@scv.si'))) {
-            return false;
-        }
-    }
-    return true;
-}
-
-// Function to check for duplicate emails
-function checkDuplicateEmails($emails)
-{
-    $nonEmptyEmails = array_filter($emails, function($email) {
-        return !empty($email);
-    });
-
-    $uniqueEmails = array_unique($nonEmptyEmails);
-
-    return count($nonEmptyEmails) != count($uniqueEmails);
-}
-
-// Function to check if a string ends with a specific suffix
-function endsWith($haystack, $needle)
-{
-    $length = strlen($needle);
-    return $length === 0 || (substr($haystack, -$length) === $needle);
-}
-
-// Function to check for existing team name in the database
-function checkExistingTeam($teamName)
-{
-    global $conn;
-
-    $result = $conn->query("SELECT team_id FROM teams WHERE team_name = '$teamName'");
-
-    return $result->num_rows > 0;
-}
-
-$conn->close();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -206,6 +103,20 @@ $conn->close();
             margin-top: 25px;
             font-size: 20px;
         }
+        .container {
+        height: 100vh; /* Use viewport height */
+        display: flex; /* Use flexbox for centering */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+    }
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
     </style>
 </head>
 <body>
@@ -218,21 +129,73 @@ $conn->close();
 </header>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <br><br>
-    <h2><label for="teamName">Ime ekipe:</label></h2>
-    <input type="text" name="teamName" required>
-
-    <label class="mail" for="email1">Email 1:</label>
-    <input type="email" name="email1" required>
-
-    <label class="mail" for="email2">Email 2:</label>
-    <input type="email" name="email2">
-
-    <label class="mail" for="email3">Email 3:</label>
-    <input type="email" name="email3">
-
-    <label class="mail" for="email4">Email 4:</label>
-    <input type="email" name="email4">
-    <input class="button" type="submit" value="Ustvari">
+    <h2>Password:</h2>
+    <input type="password" name="password" required>
+    <input class="button" type="submit" value="Submit">
 </form>
+    <div class="container">
+  <div class="vertical-center">
+    <?php
+// Check if password is correct
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["password"])) {
+    $password = $_POST["password"];
+    if ($password === "peniscookie") {
+        // Assuming you have a database connection
+        $servername = "jakakosir.eu";
+        $username = "jakakosir_gamejam";
+        $password = "=2d0?f+;?PO$";
+        $dbname = "jakakosir_gamejam";
+
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        // Fetch data from the database
+        $sql = "SELECT * FROM teams";
+        $result = $conn->query($sql);
+
+        if ($result) { // Check if query was successful
+            if ($result->num_rows > 0) {
+                echo "<table border='1'>
+                    <tr>
+                    <th>Team ID</th>
+                    <th>Team Name</th>
+                    <th>Email 1</th>
+                    <th>Email 2</th>
+                    <th>Email 3</th>
+                    <th>Email 4</th>
+                    </tr>";
+                // output data of each row
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr>
+                        <td>" . $row["team_id"] . "</td>
+                        <td>" . $row["team_name"] . "</td>
+                        <td>" . $row["email1"] . "</td>
+                        <td>" . $row["email2"] . "</td>
+                        <td>" . $row["email3"] . "</td>
+                        <td>" . $row["email4"] . "</td>
+                        </tr>";
+                }
+                echo "</table>";
+            } else {
+                echo "Ni ekip.";
+            }
+        } else {
+            echo "Error: " . $conn->error;
+        }
+
+        $conn->close();
+        exit; // Exit after displaying data
+    } else {
+        echo "Invalid password!";
+    }
+}
+?>
+</div>
+</div>
 </body>
 </html>
