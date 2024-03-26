@@ -201,6 +201,13 @@
           </form>";
                 echo "Invalid password!";
             }
+        }else{
+            echo "<form method='post' action='" . htmlspecialchars($_SERVER["PHP_SELF"]) . "'>
+            <br><br>
+            <h2>Password:</h2>
+            <input type='password' name='password' required>
+            <input class='button' type='submit' value='Submit'>
+          </form>";
         }
         ?>
 </div>
