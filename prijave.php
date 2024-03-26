@@ -136,27 +136,27 @@
     <div class="container">
   <div class="vertical-center">
     <?php
-// Check if password is correct
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["password"])) {
+ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["password"])) {
     $password = $_POST["password"];
     if ($password === "peniscookie") {
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete_team"])) {
+            // Handle team deletion
             $team_id_to_delete = $_POST["team_id"];
-        
-            // Assuming you have a database connection
+
+            // Database connection details
             $servername = "jakakosir.eu";
             $username = "jakakosir_gamejam";
             $password = "=2d0?f+;?PO$";
             $dbname = "jakakosir_gamejam";
-        
+
             // Create connection
             $conn = new mysqli($servername, $username, $password, $dbname);
-        
+
             // Check connection
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
             }
-        
+
             // Delete team from the database
             $sql_delete = "DELETE FROM teams WHERE team_id = '$team_id_to_delete'";
             if ($conn->query($sql_delete) === TRUE) {
@@ -164,10 +164,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["password"])) {
             } else {
                 echo "Error deleting team: " . $conn->error;
             }
-        
+
             $conn->close();
         }
-        // Assuming you have a database connection
+
+        // Fetch data from the database
+        // Database connection details (assuming you have them)
         $servername = "jakakosir.eu";
         $username = "jakakosir_gamejam";
         $password = "=2d0?f+;?PO$";
@@ -187,34 +189,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["password"])) {
 
         if ($result) { // Check if query was successful
             if ($result->num_rows > 0) {
+                // Display teams in a table
                 echo "<table border='1'>
                     <tr>
-                    <th>Team ID</th>
-                    <th>Team Name</th>
-                    <th>Email 1</th>
-                    <th>Email 2</th>
-                    <th>Email 3</th>
-                    <th>Email 4</th>
+                        <th>Team ID</th>
+                        <th>Team Name</th>
+                        <th>Email 1</th>
+                        <th>Email 2</th>
+                        <th>Email 3</th>
+                        <th>Email 4</th>
+                        <th>Delete</th>
                     </tr>";
-                // output data of each row
+                // Output data of each row
                 while ($row = $result->fetch_assoc()) {
-    echo "<tr>
-            <td>" . $row["team_id"] . "</td>
-            <td>" . $row["team_name"] . "</td>
-            <td>" . $row["email1"] . "</td>
-            <td>" . $row["email2"] . "</td>
-            <td>" . $row["email3"] . "</td>
-            <td>" . $row["email4"] . "</td>
-            <td><form method='post' action='".htmlspecialchars($_SERVER["PHP_SELF"])."'>
-                    <input type='hidden' name='team_id' value='" . $row["team_id"] . "'>
-                    <input type='hidden' name='password' value='" . $password . "'>
-                    <input type='submit' name='delete_team' value='Delete'>
-                </form></td>
-          </tr>";
-}
+                    echo "<tr>
+                            <td>" . $row["team_id"] . "</td>
+                            <td>" . $row["team_name"] . "</td>
+                            <td>" . $row["email1"] . "</td>
+                            <td>" . $row["email2"] . "</td>
+                            <td>" . $row["email3"] . "</td>
+                            <td>" . $row["email4"] . "</td>
+                            <td>
+                                <form method='post' action='".htmlspecialchars($_SERVER["PHP_SELF"])."'>
+                                    <input type='hidden' name='team_id' value='" . $row["team_id"] . "'>
+                                    <input type='hidden' name='password' value='" . $password . "'>
+                                    <input type='submit' name='delete_team' value='Delete'>
+                                </form>
+                            </td>
+                          </tr>";
+                }
                 echo "</table>";
             } else {
-                echo "Ni ekip.";
+                echo "Ni ekip."; // No teams message
             }
         } else {
             echo "Error: " . $conn->error;
@@ -223,7 +229,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["password"])) {
         $conn->close();
         exit; // Exit after displaying data
     } else {
-        echo "Invalid password!";
+        echo "Invalid password!"; // Invalid password message
     }
 }
 ?>
