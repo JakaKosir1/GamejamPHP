@@ -158,7 +158,7 @@
                     echo 'umri';
                     $team_id_to_delete = $_POST['team_id'];
                     // Delete team from the database
-                    $sql_delete = "DELETE * FROM teams WHERE team_id = '$team_id_to_delete'";
+                    $sql_delete = "DELETE FROM teams WHERE team_id = '$team_id_to_delete'";
                     if ($conn->query($sql_delete) === TRUE) {
                         echo "Team deleted successfully.";
                     } else {
