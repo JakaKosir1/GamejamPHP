@@ -154,6 +154,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["password"])) {
             die("Connection failed: " . $conn->connect_error);
         }
 
+        $sql_delete = "DELETE FROM teams WHERE team_id = '$team_id_to_delete'";
+    if ($conn->query($sql_delete) === TRUE) {
+        echo "Team deleted successfully.";
+    } else {
+        echo "Error deleting team: " . $conn->error;
+    }
+
         // Fetch data from the database
         $sql = "SELECT * FROM teams";
         $result = $conn->query($sql);
@@ -172,13 +179,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["password"])) {
                 // output data of each row
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>
-                        <td>" . $row["team_id"] . "</td>
-                        <td>" . $row["team_name"] . "</td>
-                        <td>" . $row["email1"] . "</td>
-                        <td>" . $row["email2"] . "</td>
-                        <td>" . $row["email3"] . "</td>
-                        <td>" . $row["email4"] . "</td>
-                        </tr>";
+                            <td>" . $row["team_id"] . "</td>
+                            <td>" . $row["team_name"] . "</td>
+                            <td>" . $row["email1"] . "</td>
+                            <td>" . $row["email2"] . "</td>
+                            <td>" . $row["email3"] . "</td>
+                            <td>" . $row["email4"] . "</td>
+                            <td><form method='post' action='".htmlspecialchars($_SERVER["PHP_SELF"])."'>
+                                    <input type='hidden' name='team_id' value='" . $row["team_id"] . "'>
+                                    <input type='hidden' name='password' value='" . $password . "'>
+                                    <input type='submit' name='delete_team' value='Delete'>
+                                </form></td>
+                          </tr>";
                 }
                 echo "</table>";
             } else {
