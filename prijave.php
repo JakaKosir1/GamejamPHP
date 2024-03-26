@@ -129,8 +129,7 @@
 </header>
 <div class="container">
     <div class="vertical-center">
-        <?php
-        // Check if password is correct
+        <?phpt
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["password"])) {
             $password = $_POST["password"];
             if ($password === "peniscookie") {
@@ -199,7 +198,7 @@
             <input type='password' name='password' required>
             <input class='button' type='submit' value='Submit'>
           </form>";
-                echo "Invalid password!";
+                echo "<br>Invalid password!";
             }
         }else{
             echo "<form method='post' action='" . htmlspecialchars($_SERVER["PHP_SELF"]) . "'>
