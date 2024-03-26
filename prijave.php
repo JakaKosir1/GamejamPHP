@@ -207,7 +207,6 @@
                                     <td>
                                         <form method='post' action='".htmlspecialchars($_SERVER["PHP_SELF"])."'>
                                             <input type='hidden' name='team_id' value='" . $row["team_id"] . "'>
-                                            <input type='hidden' name='password' value='" . $password . "'>
                                             <input type='submit' name='delete_team' value='Delete'>
                                         </form>
                                     </td>
