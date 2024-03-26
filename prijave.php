@@ -140,6 +140,33 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["password"])) {
     $password = $_POST["password"];
     if ($password === "peniscookie") {
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete_team"])) {
+            $team_id_to_delete = $_POST["team_id"];
+        
+            // Assuming you have a database connection
+            $servername = "jakakosir.eu";
+            $username = "jakakosir_gamejam";
+            $password = "=2d0?f+;?PO$";
+            $dbname = "jakakosir_gamejam";
+        
+            // Create connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
+        
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+        
+            // Delete team from the database
+            $sql_delete = "DELETE FROM teams WHERE team_id = '$team_id_to_delete'";
+            if ($conn->query($sql_delete) === TRUE) {
+                echo "Team deleted successfully.";
+            } else {
+                echo "Error deleting team: " . $conn->error;
+            }
+        
+            $conn->close();
+        }
         // Assuming you have a database connection
         $servername = "jakakosir.eu";
         $username = "jakakosir_gamejam";
@@ -153,13 +180,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["password"])) {
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-
-        $sql_delete = "DELETE FROM teams WHERE team_id = '$team_id_to_delete'";
-    if ($conn->query($sql_delete) === TRUE) {
-        echo "Team deleted successfully.";
-    } else {
-        echo "Error deleting team: " . $conn->error;
-    }
 
         // Fetch data from the database
         $sql = "SELECT * FROM teams";
@@ -178,20 +198,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["password"])) {
                     </tr>";
                 // output data of each row
                 while ($row = $result->fetch_assoc()) {
-                    echo "<tr>
-                            <td>" . $row["team_id"] . "</td>
-                            <td>" . $row["team_name"] . "</td>
-                            <td>" . $row["email1"] . "</td>
-                            <td>" . $row["email2"] . "</td>
-                            <td>" . $row["email3"] . "</td>
-                            <td>" . $row["email4"] . "</td>
-                            <td><form method='post' action='".htmlspecialchars($_SERVER["PHP_SELF"])."'>
-                                    <input type='hidden' name='team_id' value='" . $row["team_id"] . "'>
-                                    <input type='hidden' name='password' value='" . $password . "'>
-                                    <input type='submit' name='delete_team' value='Delete'>
-                                </form></td>
-                          </tr>";
-                }
+    echo "<tr>
+            <td>" . $row["team_id"] . "</td>
+            <td>" . $row["team_name"] . "</td>
+            <td>" . $row["email1"] . "</td>
+            <td>" . $row["email2"] . "</td>
+            <td>" . $row["email3"] . "</td>
+            <td>" . $row["email4"] . "</td>
+            <td><form method='post' action='".htmlspecialchars($_SERVER["PHP_SELF"])."'>
+                    <input type='hidden' name='team_id' value='" . $row["team_id"] . "'>
+                    <input type='hidden' name='password' value='" . $password . "'>
+                    <input type='submit' name='delete_team' value='Delete'>
+                </form></td>
+          </tr>";
+}
                 echo "</table>";
             } else {
                 echo "Ni ekip.";
