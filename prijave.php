@@ -134,23 +134,25 @@
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["password"])) {
             $password = $_POST["password"];
             if ($password === "peniscookie") {
-                if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete_team"])) {
+                // Fetch data from the database
+                // Database connection details (assuming you have them)
+                $servername = "jakakosir.eu";
+                $username = "jakakosir_gamejam";
+                $db_password = "=2d0?f+;?PO$";
+                $dbname = "jakakosir_gamejam";
+
+                // Create connection
+                $conn = new mysqli($servername, $username, $db_password, $dbname);
+
+                // Check connection
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+
+                // Check if delete button is clicked
+                if (isset($_POST["delete_team"])) {
                     // Handle team deletion
                     $team_id_to_delete = $_POST["team_id"];
-
-                    // Database connection details
-                    $servername = "jakakosir.eu";
-                    $username = "jakakosir_gamejam";
-                    $password = "=2d0?f+;?PO$";
-                    $dbname = "jakakosir_gamejam";
-
-                    // Create connection
-                    $conn = new mysqli($servername, $username, $password, $dbname);
-
-                    // Check connection
-                    if ($conn->connect_error) {
-                        die("Connection failed: " . $conn->connect_error);
-                    }
 
                     // Delete team from the database
                     $sql_delete = "DELETE FROM teams WHERE team_id = '$team_id_to_delete'";
@@ -159,33 +161,15 @@
                     } else {
                         echo "Error deleting team: " . $conn->error;
                     }
-
-                    $conn->close();
-                }
-
-                // Fetch data from the database
-                // Database connection details (assuming you have them)
-                $servername = "jakakosir.eu";
-                $username = "jakakosir_gamejam";
-                $password = "=2d0?f+;?PO$";
-                $dbname = "jakakosir_gamejam";
-
-                // Create connection
-                $conn = new mysqli($servername, $username, $password, $dbname);
-
-                // Check connection
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
                 }
 
                 // Fetch data from the database
                 $sql = "SELECT * FROM teams";
                 $result = $conn->query($sql);
 
-                if ($result) { // Check if query was successful
-                    if ($result->num_rows > 0) {
-                        // Display teams in a table
-                        echo "<table border='1'>
+                if ($result && $result->num_rows > 0) {
+                    // Display teams in a table
+                    echo "<table border='1'>
                             <tr>
                                 <th>Team ID</th>
                                 <th>Team Name</th>
@@ -195,9 +179,9 @@
                                 <th>Email 4</th>
                                 <th>Delete</th>
                             </tr>";
-                        // Output data of each row
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<tr>
+                    // Output data of each row
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>
                                     <td>" . $row["team_id"] . "</td>
                                     <td>" . $row["team_name"] . "</td>
                                     <td>" . $row["email1"] . "</td>
@@ -211,13 +195,10 @@
                                         </form>
                                     </td>
                                   </tr>";
-                        }
-                        echo "</table>";
-                    } else {
-                        echo "Ni ekip."; // No teams message
                     }
+                    echo "</table>";
                 } else {
-                    echo "Error: " . $conn->error;
+                    echo "Ni ekip."; // No teams message
                 }
 
                 $conn->close();
