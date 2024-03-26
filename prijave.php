@@ -154,6 +154,17 @@
                     die("Connection failed: " . $conn->connect_error);
                 }
 
+                if(isset($_POST['delete_team'])) {
+                    $team_id_to_delete = $_POST['team_id'];
+                    // Delete team from the database
+                    $sql_delete = "DELETE * FROM teams WHERE team_id = '$team_id_to_delete'";
+                    if ($conn->query($sql_delete) === TRUE) {
+                        echo "Team deleted successfully.";
+                    } else {
+                        echo "Error deleting team: " . $conn->error;
+                    }
+                }
+
                 // Fetch data from the database
                 $sql = "SELECT * FROM teams";
                 $result = $conn->query($sql);
