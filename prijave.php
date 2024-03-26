@@ -127,12 +127,6 @@
         <img class="povecava" src="Slike/scv.png" alt="Logo" height="40">
     </a>
 </header>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-    <br><br>
-    <h2>Password:</h2>
-    <input type="password" name="password" required>
-    <input class="button" type="submit" value="Submit">
-</form>
 <div class="container">
     <div class="vertical-center">
         <?php
@@ -193,11 +187,18 @@
                     }
                 } else {
                     echo "Error: " . $conn->error;
+
                 }
 
                 $conn->close();
                 exit; // Exit after displaying data
             } else {
+                echo "<form method='post' action='" . htmlspecialchars($_SERVER["PHP_SELF"]) . "'>
+            <br><br>
+            <h2>Password:</h2>
+            <input type='password' name='password' required>
+            <input class='button' type='submit' value='Submit'>
+          </form>";
                 echo "Invalid password!";
             }
         }
