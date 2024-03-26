@@ -154,25 +154,13 @@
                     die("Connection failed: " . $conn->connect_error);
                 }
 
-                if(isset($_POST['delete_team'])) {
-                    echo 'umri';
-                    $team_id_to_delete = $_POST['team_id'];
-                    // Delete team from the database
-                    $sql_delete = "DELETE FROM teams WHERE team_id = '$team_id_to_delete'";
-                    if ($conn->query($sql_delete) === TRUE) {
-                        echo "Team deleted successfully.";
-                    } else {
-                        echo "Error deleting team: " . $conn->error;
-                    }
-                }
-
                 // Fetch data from the database
                 $sql = "SELECT * FROM teams";
                 $result = $conn->query($sql);
 
                 if ($result) { // Check if query was successful
                     if ($result->num_rows > 0) {
-                        echo "<table border='1'>
+                        echo "<div><table border='1'>
                             <tr>
                             <th>Team ID</th>
                             <th>Team Name</th>
@@ -192,14 +180,14 @@
                                 <td>" . $row["email3"] . "</td>
                                 <td>" . $row["email4"] . "</td>
                                 <td>
-                                    <form method='post' action='".htmlspecialchars($_SERVER["PHP_SELF"])."'>
+                                    <form method='post' action='delete_team.php'>
                                         <input type='hidden' name='team_id' value='" . $row["team_id"] . "'>
                                         <input type='submit' name='delete_team' value='Delete'>
                                     </form>
                                 </td>
                                 </tr>";
                         }
-                        echo "</table>";
+                        echo "</table></div>";
                     } else {
                         echo "Ni ekip.";
                     }
