@@ -127,103 +127,79 @@
         <img class="povecava" src="Slike/scv.png" alt="Logo" height="40">
     </a>
 </header>
-    <div class="container">
-  <div class="vertical-center">
-  <?php
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    <br><br>
+    <h2>Password:</h2>
+    <input type="password" name="password" required>
+    <input class="button" type="submit" value="Submit">
+</form>
+<div class="container">
+    <div class="vertical-center">
+        <?php
         // Check if password is correct
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["password"])) {
             $password = $_POST["password"];
             if ($password === "peniscookie") {
-                // Fetch data from the database
-                // Database connection details (assuming you have them)
+                // Assuming you have a database connection
                 $servername = "jakakosir.eu";
                 $username = "jakakosir_gamejam";
-                $db_password = "=2d0?f+;?PO$";
+                $password = "=2d0?f+;?PO$";
                 $dbname = "jakakosir_gamejam";
 
                 // Create connection
-                $conn = new mysqli($servername, $username, $db_password, $dbname);
+                $conn = new mysqli($servername, $username, $password, $dbname);
 
                 // Check connection
                 if ($conn->connect_error) {
                     die("Connection failed: " . $conn->connect_error);
                 }
 
-                // Check if delete button is clicked
-                if (isset($_POST["delete_team"])) {
-                    // Handle team deletion
-                    $team_id_to_delete = $_POST["team_id"];
-
-                    // Delete team from the database
-                    $sql_delete = "DELETE FROM teams WHERE team_id = '$team_id_to_delete'";
-                    if ($conn->query($sql_delete) === TRUE) {
-                        echo "Team deleted successfully.";
-                    } else {
-                        echo "Error deleting team: " . $conn->error;
-                    }
-                }
-
                 // Fetch data from the database
                 $sql = "SELECT * FROM teams";
                 $result = $conn->query($sql);
 
-                if ($result && $result->num_rows > 0) {
-                    // Display teams in a table
-                    echo "<table border='1'>
+                if ($result) { // Check if query was successful
+                    if ($result->num_rows > 0) {
+                        echo "<table border='1'>
                             <tr>
-                                <th>Team ID</th>
-                                <th>Team Name</th>
-                                <th>Email 1</th>
-                                <th>Email 2</th>
-                                <th>Email 3</th>
-                                <th>Email 4</th>
-                                <th>Delete</th>
+                            <th>Team ID</th>
+                            <th>Team Name</th>
+                            <th>Email 1</th>
+                            <th>Email 2</th>
+                            <th>Email 3</th>
+                            <th>Email 4</th>
+                            <th>Delete</th>
                             </tr>";
-                    // Output data of each row
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<tr>
-                                    <td>" . $row["team_id"] . "</td>
-                                    <td>" . $row["team_name"] . "</td>
-                                    <td>" . $row["email1"] . "</td>
-                                    <td>" . $row["email2"] . "</td>
-                                    <td>" . $row["email3"] . "</td>
-                                    <td>" . $row["email4"] . "</td>
-                                    <td>
-                                        <form method='post' action='".htmlspecialchars($_SERVER["PHP_SELF"])."'>
-                                            <input type='hidden' name='team_id' value='" . $row["team_id"] . "'>
-                                            <input type='submit' name='delete_team' value='Delete'>
-                                        </form>
-                                    </td>
-                                  </tr>";
+                        // output data of each row
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>
+                                <td>" . $row["team_id"] . "</td>
+                                <td>" . $row["team_name"] . "</td>
+                                <td>" . $row["email1"] . "</td>
+                                <td>" . $row["email2"] . "</td>
+                                <td>" . $row["email3"] . "</td>
+                                <td>" . $row["email4"] . "</td>
+                                <td>
+                                    <form method='post' action='".htmlspecialchars($_SERVER["PHP_SELF"])."'>
+                                        <input type='hidden' name='team_id' value='" . $row["team_id"] . "'>
+                                        <input type='submit' name='delete_team' value='Delete'>
+                                    </form>
+                                </td>
+                                </tr>";
+                        }
+                        echo "</table>";
+                    } else {
+                        echo "Ni ekip.";
                     }
-                    echo "</table>";
                 } else {
-                    echo "Ni ekip."; // No teams message
+                    echo "Error: " . $conn->error;
                 }
 
                 $conn->close();
+                exit; // Exit after displaying data
             } else {
-                // Password is incorrect, show password input form
-                echo '
-                    <form method="post" action="'.htmlspecialchars($_SERVER["PHP_SELF"]).'">
-                        <br><br>
-                        <h2>Password:</h2>
-                        <input type="password" name="password" required>
-                        <input class="button" type="submit" value="Submit">
-                    </form>
-                ';
-                echo "Invalid password!"; // Invalid password message
+                echo "Invalid password!";
             }
-        } else {
-            // Show password input form if not submitted
-            echo '
-                <form method="post" action="'.htmlspecialchars($_SERVER["PHP_SELF"]).'">
-                    <br><br>
-                    <h2>Password:</h2>
-                    <input type="password" name="password" required>
-                    <input class="button" type="submit" value="Submit">
-                </form>
-            ';
         }
         ?>
 </div>
