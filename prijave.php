@@ -222,12 +222,20 @@
                 }
 
                 $conn->close();
-                exit; // Exit after displaying data
             } else {
+                // Password is incorrect, show password input form
+                echo '
+                    <form method="post" action="'.htmlspecialchars($_SERVER["PHP_SELF"]).'">
+                        <br><br>
+                        <h2>Password:</h2>
+                        <input type="password" name="password" required>
+                        <input class="button" type="submit" value="Submit">
+                    </form>
+                ';
                 echo "Invalid password!"; // Invalid password message
             }
         } else {
-            // Show password input if not already submitted
+            // Show password input form if not submitted
             echo '
                 <form method="post" action="'.htmlspecialchars($_SERVER["PHP_SELF"]).'">
                     <br><br>
