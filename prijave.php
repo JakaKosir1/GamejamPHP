@@ -155,6 +155,7 @@
                 }
 
                 if(isset($_POST['delete_team'])) {
+                    echo 'umri';
                     $team_id_to_delete = $_POST['team_id'];
                     // Delete team from the database
                     $sql_delete = "DELETE * FROM teams WHERE team_id = '$team_id_to_delete'";
