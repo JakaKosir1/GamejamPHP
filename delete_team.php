@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete_team"])) {
 
         // Execute the delete statement
         if ($stmt->execute()) {
-            echo "Team deleted successfully.";
+            header("Location: prijave.php");
         } else {
             echo "Error deleting team: " . $conn->error;
         }
