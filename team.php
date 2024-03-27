@@ -210,7 +210,7 @@ $conn->close();
 </head>
 <body>
 <header class="navbar">
-    <a class="navadn" href="home.php">Domov</a>
+    <a class="navadn" href="index.php">Domov</a>
     <a class="navadn" href="team.php">Ustvari ekipo</a>
     <a href="http://ers.scv.si" target="_blank">
         <img class="povecava" src="Slike/scv.png" alt="Logo" height="40">
