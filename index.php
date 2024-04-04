@@ -228,7 +228,7 @@
     <br><br><br>
     <h2>SPONZORJI</h2>
     <div class="sponz-section-div">
-        <a href="https://trickytribe.com" target="_blank">
+        <a href="https://sloveniagames.com" target="_blank">
             <img class="sponz" src="Slike/sponz1.png">
         </a>
         <a href="https://czk.si/skupnost-czk/drustvo-razvijalcev-iger-slovenije/" target="_blank">
