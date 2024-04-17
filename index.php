@@ -210,7 +210,7 @@
                 <h2 class="about-section-title">Kaj je ERŠ Gamejam?</h2>
                 <p class="about-section-text">ERŠ Gamejam je dogodek, ki ga organizirajo dijaki Elektro in računalniške šole v Velenju. Namenjen je navdušencem nad računalništvom, še posebej tistim, ki jih zanima ustvarjanje računalniških iger. Dogodek bo vključeval različne dejavnosti, vključno s tekmovanji v razvoju računalniških iger, VR doživetji, igranjem na PS5 in še več.</p>
                 <h2 class="about-section-title">Kdaj in Kje?</h2>
-                <p class="about-section-text">ERŠ Gamejam bo potekal v ERŠ učilnici C503 in C502 v Velenju, 19. in 20. aprila 2024. Dogodek se bo začel ob 14:00 in končal naslednji dan ob 15:00.</p>
+                <p class="about-section-text">ERŠ Gamejam bo potekal v spodnjih prostorih Gaudeamusa v Velenju, 19. in 20. aprila 2024. Dogodek se bo začel ob 14:00 in končal naslednji dan ob 15:00.</p>
                 <h2 class="about-section-title">Kaj Potrebujem?</h2>
                 <p class="about-section-text">Za udeležbo na dogodku potrebujete računalnik, monitor, tipkovnico, miško in slušalke, ali pa samo prenosni računalnik in slušalke. Šola lahko na določeni ravni zagotovi računalnike, vendar prosimo, da to potrebo sporočite preko e-pošte na naslov "andraz.holesek@scv.si". Priporočamo tudi, da prinesete podaljšek in internetni kabel, saj je število električnih vtičnic omejeno.</p>
             </div>
