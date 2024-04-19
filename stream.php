@@ -24,8 +24,8 @@
     <!-- Paste the Twitch embed code here -->
     <iframe
         src="https://www.twitch.tv/gamejam2024"
-        height="480"
-        width="720"
+        height="<height>"
+        width="<width>"
         allowfullscreen>
     </iframe>
 </body>
