@@ -4,7 +4,7 @@
     <title>Gamejam Stream</title>
     <style>
         body {
-            background-image: url("Slike/mainPhoto.png");
+            background-image: "Slike/mainPhoto.png";
             background-size: cover; /* Adjust as needed */
             background-position: center; /* Adjust as needed */
             /* Additional styling for the body */
