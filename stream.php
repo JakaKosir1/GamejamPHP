@@ -68,6 +68,10 @@
         .navbar img:hover {
             transform: scale(1.1); /* Increase size on hover */
         }
+        header {
+            padding: 20px;
+            background-color: #432980; /* Slightly lighter purple for header */
+        }
     </style>
 </head>
 <body>
