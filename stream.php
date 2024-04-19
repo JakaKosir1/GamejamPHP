@@ -23,7 +23,7 @@
 <body>
     <!-- Paste the Twitch embed code here -->
     <iframe
-        src="https://player.twitch.tv/?channel=gamejam2024"
+        src="https://www.twitch.tv/gamejam2024"
         height="480"
         width="720"
         allowfullscreen>
