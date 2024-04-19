@@ -33,6 +33,41 @@
             height: 100%;
             border: none;
         }
+        .navbar {
+            overflow: hidden;
+            background-color: #432980; /* Purple background */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+        }
+
+        .navadn {
+            float: left;
+            color: #ccc; /* Grey text */
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 18px; /* Adjust font size */
+            font-weight: bold; /* Make text bold */
+            letter-spacing: 1px; /* Add letter spacing for clarity */
+            text-transform: uppercase; /* Convert text to uppercase */
+            transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+        }
+
+        .navadn:hover {
+            color: #fff; /* White text on hover */
+            background-color: #5d479c; /* Lighter purple background on hover */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+            transform: translateY(-2px); /* Move text slightly up on hover */
+        }
+
+        .navbar img {
+            float: right;
+            padding: 10px;
+            transition: transform 0.3s ease; /* Smooth transition */
+        }
+
+        .navbar img:hover {
+            transform: scale(1.1); /* Increase size on hover */
+        }
     </style>
 </head>
 <body>
