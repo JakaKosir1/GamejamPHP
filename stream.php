@@ -18,7 +18,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* Make the container fill the viewport height */
+            height: calc(100vh - 80px); /* Adjusted height to account for navbar */
+            margin-top: 80px; /* Added margin to move the content below the navbar */
         }
 
         /* Optional: Style the embedded Twitch player */
@@ -36,7 +37,10 @@
         .navbar {
             overflow: hidden;
             background-color: #432980; /* Purple background */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+            position: fixed; /* Fixed position to keep it at the top */
+            width: 100%; /* Full width */
+            top: 0; /* Stick to the top */
+            z-index: 999; /* Ensure it appears above other content */
         }
 
         .navadn {
