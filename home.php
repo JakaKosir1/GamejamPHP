@@ -195,8 +195,10 @@ h2 {
 </head>
 <body>
 <header class="navbar">
-    <a class="navadn" href="index.php">Domov</a>
+    <a class="navadn" href="home.php">Domov</a>
     <a class="navadn" href="team.php">Ustvari ekipo</a>
+    <a class="navadn" href="galerija.php">Galerija</a>
+    <a class="navadn" href="stream.php">Stream</a>
     <a href="http://ers.scv.si" target="_blank">
         <img class="povecava" src="slike/scv.png" alt="Logo" height="40">
     </a>
@@ -245,7 +247,7 @@ h2 {
 
 <script>
     
-    var countDownDate = new Date("Mar 29, 2024 14:00:00").getTime();
+    var countDownDate = new Date("May 19, 2024 14:00:00").getTime();
 
     var x = setInterval(function() {
 
